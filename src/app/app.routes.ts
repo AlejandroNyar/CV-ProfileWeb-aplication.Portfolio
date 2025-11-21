@@ -5,4 +5,5 @@ export const routes: Routes = [{
     path: 'main',
     component: MainContainer
   },
-  { path: '**', redirectTo: 'main' },];
+  { path: '**', redirectTo: 'main' }
+];

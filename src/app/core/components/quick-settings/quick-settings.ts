@@ -7,8 +7,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
-import { SettingsService } from '../../services/settings-service';
-import { TranslateService } from '../../services/translate-service';
+import { SettingsService } from '../../service/settings-service';
+import { TranslateService } from '../../service/translate-service';
 
 @Component({
   selector: 'app-quick-settings',

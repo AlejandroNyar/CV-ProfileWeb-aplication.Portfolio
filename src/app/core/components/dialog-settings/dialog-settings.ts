@@ -6,8 +6,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import { SettingsService } from '../../services/settings-service';
-import { TranslateService } from '../../services/translate-service';
+import { SettingsService } from '../../service/settings-service';
+import { TranslateService } from '../../service/translate-service';
+
 @Component({
   selector: 'app-dialog-settings',
   imports: [
