@@ -1,0 +1,30 @@
+{
+  "html": {
+    "components": {
+      "dialog": {
+        "privacy": {
+          "title": "Política de Privacidad y Gestión de Datos",
+          "authText": "En esta aplicación, tus datos se gestionan de acuerdo con las mejores prácticas de privacidad.",
+          "minData": "Solo se almacenan los datos mínimos necesarios para la autenticación (correo y UID).",
+          "thirdParty": "No se comparten datos personales con terceros.",
+          "firebaseSession": "El almacenamiento de sesión se gestiona mediante Firebase Authentication.",
+          "deleteData": "Puedes solicitar la eliminación de tus datos en cualquier momento contactando al siguiente mail:",
+          "contactInfo": "alejandropb@gmail.com",
+          "acceptTermsText": "Al continuar utilizando la aplicación, aceptas esta política de privacidad y la gestión de tus datos de acuerdo con estos términos.",
+          "acceptTextBtn": "Aceptar"
+        },
+        "settings": {
+          "title": "Configuración",
+          "darkModeLbl": "Modo Oscuro",
+          "languageLbl": "Idioma",
+          "themeLbl": "Tema",
+          "closeBtn": "Cerrar"
+        }
+      }
+    }
+  },
+  "errors": {
+    "settings": "Error al parsear cookie de configuración",
+    "translate": "Error cargando traducciones para "
+  }
+}

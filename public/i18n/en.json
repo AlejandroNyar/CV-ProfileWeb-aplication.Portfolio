@@ -1,0 +1,30 @@
+{
+  "html": {
+    "components": {
+      "dialog": {
+        "privacy": {
+          "title": "Privacy Policy and Data Management",
+          "authText": "In this application, your data is managed according to best privacy practices.",
+          "minData": "Only the minimum data necessary for authentication (email and UID) is stored.",
+          "thirdParty": "No personal data is shared with third parties.",
+          "firebaseSession": "Session storage is managed through Firebase Authentication.",
+          "deleteData": "You can request deletion of your data at any time by contacting the following email:",
+          "contactInfo": "alejandropb@gmail.com",
+          "acceptTermsText": "By continuing to use this application, you accept this privacy policy and the management of your data according to these terms.",
+          "acceptTextBtn": "Accept"
+        },
+        "settings": {
+          "title": "Settings",
+          "darkModeLbl": "Dark Mode",
+          "languageLbl": "Language",
+          "themeLbl": "Theme",
+          "closeBtn": "Close"
+        }
+      }
+    }
+  },
+  "errors": {
+    "settings": "Error parsing settings cookie",
+    "translate": "Error loading translations for "
+  }
+}

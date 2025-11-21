@@ -1,0 +1,35 @@
+<footer class="footer-container">
+  <mat-divider></mat-divider>
+
+  <div class="footer-content">
+    <div class="footer-left">
+      <span>&copy; {{ currentYear }} Alejandro P. B.</span>
+      <span class="separator">|</span>
+      <button mat-button color="primary" (click)="openPrivacyDialog()">
+        Privacy Policy
+      </button>
+    </div>
+
+    <div class="footer-right">
+      <a href="mailto:alejandropb@gmail.com" aria-label="Email">
+        <mat-icon>mail_outline</mat-icon>
+      </a>
+      <a
+        href="https://www.linkedin.com/in/alejandro-nyar/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+      >
+        <mat-icon>linkedin</mat-icon>
+      </a>
+      <a
+        href="https://github.com/alejandropb"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+      >
+        <mat-icon>code</mat-icon>
+      </a>
+    </div>
+  </div>
+</footer>

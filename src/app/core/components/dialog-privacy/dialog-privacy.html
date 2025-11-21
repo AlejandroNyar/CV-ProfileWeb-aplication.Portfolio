@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>{{this.translate.t("html.components.dialog.privacy.title")()}}</h2>
+
+<mat-dialog-content>
+  <p>
+    {{this.translate.t("html.components.dialog.privacy.authText")()}}
+  </p>
+  <ul>
+    <li>{{this.translate.t("html.components.dialog.privacy.minData")()}}</li>
+    <li>{{this.translate.t("html.components.dialog.privacy.thirdParty")()}}</li>
+    <li>{{this.translate.t("html.components.dialog.privacy.firebaseSession")()}}</li>
+    <li>{{this.translate.t("html.components.dialog.privacy.deleteData")()}}</li>
+  </ul>
+
+  <p>
+    {{this.translate.t("html.components.dialog.privacy.acceptTermsText")()}}
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-stroked-button mat-dialog-close>{{this.translate.t("html.components.dialog.privacy.acceptTextBtn")()}}</button>
+</mat-dialog-actions>
