@@ -1,4 +1,4 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, tap, of } from 'rxjs';
 
@@ -8,7 +8,9 @@ export class TranslateService {
   private currentLang = signal<string>('en');
   private supportedLangs = ['en', 'es', 'de'];
 
-  constructor(private http: HttpClient) {
+  http = inject(HttpClient)
+
+  constructor() {
     this.initLanguage();
   }
 
