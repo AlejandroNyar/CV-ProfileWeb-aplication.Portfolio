@@ -1,48 +1,40 @@
-<mat-card class="contact-card">
-  <form [formGroup]="contactForm" (ngSubmit)="send()">
+<div class="contact-container">
+    <mat-card class="contact-card">
+      <mat-card-header>
+          <h2 class="subtitle">Contact</h2>
+      </mat-card-header>
+    <form [formGroup]="contactForm" (ngSubmit)="send()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" required />
+        @if(contactForm.controls.email.invalid && contactForm.controls.email.touched){
+        <mat-error> Introduce un email válido </mat-error>
+        }
+      </mat-form-field>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Nombre</mat-label>
-      <input matInput formControlName="name" required>
-      @if(contactForm.controls.name.invalid && contactForm.controls.name.touched){
-        <mat-error>
-        El nombre es obligatorio
-        </mat-error>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Asunto</mat-label>
+        <input matInput formControlName="subject" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Mensaje</mat-label>
+        <textarea matInput rows="5" formControlName="message" required></textarea>
+      </mat-form-field>
+
+      <mat-checkbox formControlName="privacy"> Acepto la política de privacidad </mat-checkbox>
+      @if(contactForm.controls.privacy.touched && !contactForm.controls.privacy.value){
+      <mat-error> Debes aceptar la política de privacidad </mat-error>
       }
-    </mat-form-field>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Email</mat-label>
-      <input matInput formControlName="email" type="email" required>
-      @if(contactForm.controls.email.invalid && contactForm.controls.email.touched){
-        <mat-error>
-        Introduce un email válido
-        </mat-error>
-      }
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Asunto</mat-label>
-      <input matInput formControlName="subject" required>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Mensaje</mat-label>
-      <textarea matInput rows="5" formControlName="message" required></textarea>
-    </mat-form-field>
-
-    <mat-checkbox formControlName="privacy">
-      Acepto la política de privacidad
-    </mat-checkbox>
-    @if(contactForm.controls.privacy.touched && !contactForm.controls.privacy.value){
-        <mat-error>
-          Debes aceptar la política de privacidad
-        </mat-error>
-    }
-
-    <button mat-raised-button color="primary" class="full-width" [disabled]="contactForm.invalid">
-      Enviar mensaje
-    </button>
-
-  </form>
-</mat-card>
+      <button mat-raised-button color="primary" class="full-width" [disabled]="contactForm.invalid">
+        Enviar mensaje
+      </button>
+    </form>
+    <mat-card-footer>
+        <div class="footer">
+            <span> ¿Prefieres contactar por email? <button mat-button color="primary" (click)="this.linkMailTo()">Prueba aquí</button></span>
+        </div>
+    </mat-card-footer>
+  </mat-card>
+</div>

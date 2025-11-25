@@ -1,5 +1,7 @@
 .contact-card {
   padding: 20px;
+  width: 90%;
+  max-width: 900px;
   border-radius: 12px;
 }
 
@@ -10,4 +12,37 @@
 
 mat-checkbox {
   margin-bottom: 16px;
+}
+
+mat-card-header{
+    margin: 0;
+}
+
+.subtitle {
+    margin: 0 auto 30px auto;
+  text-align: center;
+  color: #414141;
+  font-family: 'inria-serif', 'Robotto';
+  .subtitle-text {
+    font-weight: 500;
+  }
+}
+
+.contact-container {
+  background: #dfc5ab;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &>span{
+        width: 80%;
+        text-align: center;
+    }
 }
