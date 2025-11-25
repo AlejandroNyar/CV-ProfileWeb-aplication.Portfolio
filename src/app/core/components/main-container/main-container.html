@@ -1,3 +1,33 @@
-<app-home-screen></app-home-screen>
-<app-contact></app-contact>
-<app-footer></app-footer>
+<!-- contenedor principal: ocupamos viewport entero -->
+<div class="fullpage-root" [class.header-logo-active]="isHeaderLogo()">
+  <div class="sections" [style.transform]="'translateY(calc(-1 * ' + currentIndex() + ' * 100vh))'">
+    <section class="section home">
+      <app-home-screen></app-home-screen>
+    </section>
+
+    <!-- 3: CONTACT -->
+    <section class="section contact">
+      <app-contact></app-contact>
+    </section>
+  </div>
+
+  <section class="contact-screen">
+    ...
+    @if(!footerVisible){
+        <div class="footer-hint">▼ más</div>
+    }
+  </section>
+
+  <app-footer class="footer" [class.visible]="footerVisible"></app-footer>
+
+  <!-- Indicador de avance (small dots) -->
+  <nav class="dots">
+    @for (i of [0, 1, 2, 3]; track $index) {
+    <button
+      class="dot"
+      [class.active]="currentIndex() === $index"
+      (click)="scrollSvc.goTo($index)"
+    ></button>
+    }
+  </nav>
+</div>
