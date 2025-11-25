@@ -4,17 +4,21 @@
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Nombre</mat-label>
       <input matInput formControlName="name" required>
-      <mat-error *ngIf="contactForm.controls.name.invalid && contactForm.controls.name.touched">
+      @if(contactForm.controls.name.invalid && contactForm.controls.name.touched){
+        <mat-error>
         El nombre es obligatorio
-      </mat-error>
+        </mat-error>
+      }
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Email</mat-label>
       <input matInput formControlName="email" type="email" required>
-      <mat-error *ngIf="contactForm.controls.email.invalid && contactForm.controls.email.touched">
+      @if(contactForm.controls.email.invalid && contactForm.controls.email.touched){
+        <mat-error>
         Introduce un email válido
-      </mat-error>
+        </mat-error>
+      }
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">
@@ -30,9 +34,11 @@
     <mat-checkbox formControlName="privacy">
       Acepto la política de privacidad
     </mat-checkbox>
-    <mat-error *ngIf="contactForm.controls.privacy.touched && !contactForm.controls.privacy.value">
-      Debes aceptar la política de privacidad
-    </mat-error>
+    @if(contactForm.controls.privacy.touched && !contactForm.controls.privacy.value){
+        <mat-error>
+          Debes aceptar la política de privacidad
+        </mat-error>
+    }
 
     <button mat-raised-button color="primary" class="full-width" [disabled]="contactForm.invalid">
       Enviar mensaje
