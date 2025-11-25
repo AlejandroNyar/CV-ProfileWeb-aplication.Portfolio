@@ -2,14 +2,12 @@ import { Injectable, signal, WritableSignal } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class Scroll{
-  // índice de pantalla actual: 0 = Home, 1 = WhoAmI, 2 = Services, ... 
   currentIndex: WritableSignal<number> = signal(0);
+  total: WritableSignal<number> = signal(2);
 
-  // número total de pantallas (ajusta si cambias la cantidad)
-  total = 4;
 
   next() {
-    this.currentIndex.update(i => Math.min(this.total - 1, i + 1));
+    this.currentIndex.update(i => Math.min(this.total() - 1, i + 1));
   }
 
   prev() {
@@ -17,10 +15,18 @@ export class Scroll{
   }
 
   isLastIndex(): boolean{
-    return this.currentIndex() == (this.total-1);
+    return this.currentIndex() == (this.total()-1);
+  }
+
+  setTotalScreens(num: number):void{
+    this.total.set(num)
   }
 
   goTo(index: number) {
-    if (index >= 0 && index < this.total) this.currentIndex.set(index);
+    if (index >= 0 && index < this.total()) this.currentIndex.set(index);
+  }
+
+  goToLast(){
+    this.currentIndex.set(this.total()-1)
   }
 }

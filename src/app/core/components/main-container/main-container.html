@@ -1,12 +1,11 @@
 <!-- contenedor principal: ocupamos viewport entero -->
 <div class="fullpage-root" [class.header-logo-active]="isHeaderLogo()">
-  <div class="sections" [style.transform]="'translateY(calc(-1 * ' + currentIndex() + ' * 100vh))'">
-    <section class="section home">
+  <div class="sections" id="sections" [style.transform]="'translateY(calc(-1 * ' + currentIndex() + ' * 100vh))'">
+    <section #sectionEl class="section home">
       <app-home-screen></app-home-screen>
     </section>
 
-    <!-- 3: CONTACT -->
-    <section class="section contact">
+    <section #sectionEl class="section contact">
       <app-contact></app-contact>
     </section>
   </div>
@@ -22,7 +21,7 @@
 
   <!-- Indicador de avance (small dots) -->
   <nav class="dots">
-    @for (i of [0, 1, 2, 3]; track $index) {
+    @for (i of dots; track $index) {
     <button
       class="dot"
       [class.active]="currentIndex() === $index"
