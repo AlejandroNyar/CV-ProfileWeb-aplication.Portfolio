@@ -1,7 +1,7 @@
 import { Component, inject, signal, ViewChild } from '@angular/core';
 import { Scroll } from '../../service/scroll';
 import { ThemeService } from '../../service/theme-service';
-//import { TranslateService } from '../../service/translate-service';
+import { TranslateService } from '../../service/translate-service';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,6 +10,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { MainContainer } from '../main-container/main-container';
+import { supportedLangs } from '../../model/suportedLanguage';
 
 @Component({
   selector: 'app-nav-bar',
@@ -31,8 +32,10 @@ export class NavBar {
   @ViewChild('drawer') drawer!: MatSidenav;
   public scroll: Scroll = inject(Scroll);
   public theme: ThemeService = inject(ThemeService);
-  //public translateService: TranslateService = inject(TranslateService);
-  selected = 'es' //Temporal
+  public translateService: TranslateService = inject(TranslateService);
+
+  public supportedLang: supportedLangs[] = this.translateService.getSupportedLanguages()
+
   sections = [
     { label: 'Home' },
     { label: 'Who am I' },
@@ -60,10 +63,9 @@ export class NavBar {
     return this.theme.isDark();
   }
 
-  // lang //TODO: Arreglar el translate service 
-  // lang = signal(this.translateService.getLanguage());
-  // changeLang(lang: string) {
-  //   this.translateService.setLanguage(lang);
-  //   this.lang.set(lang);
-  // }
+  lang = signal(this.translateService.getLanguage());
+  changeLang(lang: string) {
+    this.translateService.setLanguage(lang);
+    this.lang.set(lang);
+  }
 }

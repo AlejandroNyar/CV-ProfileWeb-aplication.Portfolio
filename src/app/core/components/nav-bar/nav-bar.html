@@ -24,21 +24,17 @@
       </mat-nav-list>
       <mat-nav-list>
         <mat-divider class="divider"></mat-divider>
-        <!-- Theme toggle -->
         <mat-list-item class="d-flex content-center">
           <button mat-icon-button (click)="toggleTheme()">
             <mat-icon>{{ isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
           </button>
         </mat-list-item>
 
-        <!-- Language -->
         <mat-list-item>
-          <mat-select [(value)]="this.selected">
-            <!-- [value]="lang()" 
-              (selectionChange)="changeLang($event.value)" -->
-            <mat-option value="es">Español</mat-option>
-            <mat-option value="en">English</mat-option>
-            <mat-option value="de">Deutsch</mat-option>
+          <mat-select [value]="lang()" (selectionChange)="changeLang($event.value)">
+            @for(langElem of this.supportedLang; track $index){
+                <mat-option value="{{langElem.in}}">{{langElem.lang}}</mat-option>
+            }
           </mat-select>
         </mat-list-item>
       </mat-nav-list>
@@ -66,11 +62,10 @@
         <mat-icon>{{ isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
       </button>
 
-      <mat-select [(value)]="this.selected">
-        <!-- [value]="lang()" (selectionChange)="changeLang($event.value)" -->
-        <mat-option value="es">Español</mat-option>
-        <mat-option value="en">English</mat-option>
-        <mat-option value="de">Deutsch</mat-option>
+      <mat-select [value]="lang()" (selectionChange)="changeLang($event.value)" >
+        @for(langElem of this.supportedLang; track $index){
+                <mat-option value="{{langElem.in}}">{{langElem.lang}}</mat-option>
+            }
       </mat-select>
     </div>
   </mat-toolbar>
