@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { MainContainer } from './core/components/main-container/main-container';
+import { NavBar } from './core/components/nav-bar/nav-bar';
 
 export const routes: Routes = [{
     path: 'main',
-    component: MainContainer
+    component: NavBar
   },
   { path: '**', redirectTo: 'main' }
 ];

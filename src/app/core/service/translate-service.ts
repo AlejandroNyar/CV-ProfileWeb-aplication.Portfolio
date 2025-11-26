@@ -78,7 +78,8 @@ export class TranslateService {
   }
 
   private getCookie(name: string): string | null {
-    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    const match = localStorage.getItem(name);
+    console.log("match", match)
     return match ? decodeURIComponent(match[2]) : null;
   }
 

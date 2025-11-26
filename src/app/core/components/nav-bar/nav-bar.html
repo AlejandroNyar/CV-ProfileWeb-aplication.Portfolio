@@ -1,0 +1,82 @@
+<!-- navbar.component.html -->
+
+<mat-sidenav-container class="nav-container">
+  <!-- SIDENAV MOBILE -->
+  <mat-sidenav class="mobile-only" #drawer mode="over">
+    <div class="sidenav">
+      <mat-nav-list>
+        <div class="close-container">
+            <button mat-icon-button (click)="drawer.close()" class="btn-toggler">
+              <mat-icon>close</mat-icon>
+            </button>
+        </div>
+      </mat-nav-list>
+      <mat-nav-list>
+        @for (sec of this.sections; track $index) {
+        <mat-list-item
+          (click)="goTo($index); drawer.close()"
+          class="list-item"
+          [class.active]="isActive($index)"
+        >
+          {{ sec.label }}
+        </mat-list-item>
+        }
+      </mat-nav-list>
+      <mat-nav-list>
+        <mat-divider class="divider"></mat-divider>
+        <!-- Theme toggle -->
+        <mat-list-item class="d-flex content-center">
+          <mat-slide-toggle (change)="toggleTheme()">
+            {{ isDark() ? 'Modo Claro' : 'Modo Oscuro' }}
+          </mat-slide-toggle>
+        </mat-list-item>
+
+        <!-- Language -->
+        <mat-list-item>
+          <mat-select [(value)]="this.selected">
+            <!-- [value]="lang()" 
+              (selectionChange)="changeLang($event.value)" -->
+            <mat-option value="es">Español</mat-option>
+            <mat-option value="en">English</mat-option>
+            <mat-option value="de">Deutsch</mat-option>
+          </mat-select>
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+
+  <!-- TOOLBAR TOP -->
+  <mat-toolbar color="primary" class="navbar">
+    <span class="logo"><img src="img/path14-5-2-0-6-9-6-9.svg" class="logo-img" alt="logo" /></span>
+    <button mat-icon-button (click)="drawer.open()" class="mobile-only btn-toggler">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <!-- Desktop nav -->
+    <span class="spacer desktop-only"></span>
+
+    <div class="desktop-only">
+      @for (sec of this.sections; track $index) {
+      <button mat-button (click)="goTo($index)" [class.active]="isActive($index)">
+        {{ sec.label }}
+      </button>
+      }
+
+      <button mat-icon-button (click)="toggleTheme()">
+        <mat-icon>{{ isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+      </button>
+
+      <mat-select>
+        <!-- [value]="lang()" (selectionChange)="changeLang($event.value)" -->
+        <mat-option value="es">Español</mat-option>
+        <mat-option value="en">English</mat-option>
+        <mat-option value="de">Deutsch</mat-option>
+      </mat-select>
+    </div>
+  </mat-toolbar>
+
+  <!-- Content slot -->
+  <ng-content>
+    <app-main-container></app-main-container>
+  </ng-content>
+</mat-sidenav-container>
