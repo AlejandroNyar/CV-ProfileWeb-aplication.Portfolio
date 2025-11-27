@@ -1,4 +1,5 @@
 export interface supportedLangs{
     in:string,
-    lang:string
+    lang:string,
+    svg: string
 }

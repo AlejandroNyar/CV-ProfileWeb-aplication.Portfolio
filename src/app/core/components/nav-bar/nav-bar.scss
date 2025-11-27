@@ -59,6 +59,20 @@
   text-align: center;
 }
 
+.lang-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;     // ★ centra todo
+  gap: 8px;
+
+  img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+}
+
+
 .spacer {
   flex: 1;
 }

@@ -33,7 +33,12 @@
         <mat-list-item>
           <mat-select [value]="lang()" (selectionChange)="changeLang($event.value)">
             @for(langElem of this.supportedLang; track $index){
-                <mat-option value="{{langElem.in}}">{{langElem.lang}}</mat-option>
+            <mat-option [value]="langElem.in">
+              <div class="lang-option">
+                <img [src]="langElem.svg" [alt]="langElem.lang" />
+                <span>{{ langElem.lang }}</span>
+              </div>
+            </mat-option>
             }
           </mat-select>
         </mat-list-item>
@@ -62,10 +67,10 @@
         <mat-icon>{{ isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
       </button>
 
-      <mat-select [value]="lang()" (selectionChange)="changeLang($event.value)" >
+      <mat-select [value]="lang()" (selectionChange)="changeLang($event.value)">
         @for(langElem of this.supportedLang; track $index){
-                <mat-option value="{{langElem.in}}">{{langElem.lang}}</mat-option>
-            }
+        <mat-option value="{{ langElem.in }}">{{ langElem.lang }}</mat-option>
+        }
       </mat-select>
     </div>
   </mat-toolbar>
