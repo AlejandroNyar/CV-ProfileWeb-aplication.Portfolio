@@ -12,7 +12,7 @@ export class NotificationService {
   private open(message: string, type: 'success' | 'error' | 'info') {
     const config: MatSnackBarConfig = {
       duration: 3000,
-      horizontalPosition: 'right',
+      horizontalPosition: 'center',
       verticalPosition: 'top',
       panelClass: [`notif-${type}`],
       data: { message, type }

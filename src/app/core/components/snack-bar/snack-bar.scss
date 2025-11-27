@@ -1,8 +1,13 @@
 .notif-container {
   display: flex;
   align-items: center;
-  gap: 1rem;
   color: white;
+  margin: auto;
+  gap: 1rem;
+  .notif{
+    //width: 20%;
+    min-width: 1.5rem;
+  }
 }
 
 .notif-icon {
