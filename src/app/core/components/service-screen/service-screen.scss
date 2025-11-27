@@ -1,0 +1,65 @@
+.services-section {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+
+  .title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 4rem;
+    color: var(--md-sys-color-on-background);
+  }
+
+  .grid {
+    display: grid;
+    gap: 2rem;
+
+    @media (min-width: 700px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1100px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .service-card {
+    border-radius: 1.5rem;
+    background: var(--md-sys-color-surface-container-low);
+    box-shadow: var(--md-sys-elevation-level2);
+
+    mat-card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      .service-icon {
+        font-size: 2rem;
+        color: var(--md-sys-color-primary);
+      }
+
+      mat-card-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+    }
+
+    p {
+      opacity: 0.9;
+      line-height: 1.5;
+    }
+
+    .tech-list {
+      margin-top: 1rem;
+
+      .tech-chip {
+        background: var(--md-sys-color-secondary-container);
+        color: var(--md-sys-color-on-secondary-container);
+        border-radius: 1rem;
+        font-size: 0.85rem;
+        padding: 0 0.4rem;
+      }
+    }
+  }
+}
