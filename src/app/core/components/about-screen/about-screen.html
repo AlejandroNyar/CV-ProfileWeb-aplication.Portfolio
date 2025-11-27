@@ -1,1 +1,47 @@
-<p>about-screen works!</p>
+<section class="who-container">
+
+  <!-- SVG decorativos con parallax -->
+  <img src="img/circuit1.svg"
+       class="decor decor-1"
+       [style.transform]="'translateY(' + parallaxOffset + 'px)'">
+       
+  <img src="img/circuit2.svg"
+       class="decor decor-2"
+       [style.transform]="'translateY(' + (parallaxOffset * 0.6) + 'px)'">
+       
+  <img src="img/circuit3.svg"
+       class="decor decor-3"
+       [style.transform]="'translateY(' + (parallaxOffset * 0.3) + 'px)'">
+
+  <div class="content">
+    <h2 class="title">Who am I</h2>
+
+    <div class="cards">
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>About me</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            Soy un desarrollador full-stack con experiencia creando aplicaciones web modernas,
+            herramientas internas y soluciones personalizadas para empresas. Me gusta unir diseño,
+            funcionalidad y tecnología.
+          </p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Skills & strengths</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            Trabajo principalmente con Angular, Node.js, TypeScript, bases de datos SQL/NoSQL y UX.
+            Me centro en crear soluciones limpias, eficientes y altamente mantenibles.
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+</section>

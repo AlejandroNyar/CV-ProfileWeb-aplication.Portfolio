@@ -3,10 +3,11 @@ import { Footer } from '../footer/footer';
 import { HomeScreen } from '../home-screen/home-screen';
 import { Contact } from '../contact/contact';
 import { Scroll } from '../../service/scroll';
+import { AboutScreen } from "../about-screen/about-screen";
 
 @Component({
   selector: 'app-main-container',
-  imports: [Footer, HomeScreen, Contact],
+  imports: [Footer, HomeScreen, Contact, AboutScreen],
   templateUrl: './main-container.html',
   styleUrl: './main-container.scss',
 })
