@@ -1,0 +1,6 @@
+<div class="notif-container">
+  @if(data.type === 'success'){<mat-icon class="notif-icon">check_circle</mat-icon>}
+  @if(data.type === 'error'){<mat-icon class="notif-icon">error</mat-icon>}
+  @if(data.type === 'info'){<mat-icon class="notif-icon">info</mat-icon>}
+  <span class="notif-message">{{ data.message }}</span>
+</div>

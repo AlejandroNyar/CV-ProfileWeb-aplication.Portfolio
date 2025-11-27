@@ -25,6 +25,7 @@ import { TranslateService } from '../../service/translate-service';
 })
 export class QuickSettings {
   private settingsService = inject(SettingsService);
+  private dialog: MatDialog =inject(MatDialog);
   translateService: TranslateService = inject(TranslateService);
   
   isOpen = signal(false);
@@ -32,7 +33,7 @@ export class QuickSettings {
   language = this.settingsService.language ?? signal('en');
 
 
-  constructor(private dialog: MatDialog) {}
+  constructor() {}
 
   togglePanel() {
     this.isOpen.update((v) => !v);

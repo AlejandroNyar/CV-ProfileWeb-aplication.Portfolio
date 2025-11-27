@@ -6,6 +6,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { ContactService } from '../../service/contact-service';
+import { NotificationService } from '../../service/notification-service';
 
 @Component({
   selector: 'app-contact',
@@ -23,9 +24,9 @@ import { ContactService } from '../../service/contact-service';
 export class Contact {
   private fb: FormBuilder = inject(FormBuilder);
   private contactService: ContactService = inject(ContactService);
+  private notifService: NotificationService = inject(NotificationService) 
 
   contactForm = this.fb.group({
-    // name: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     subject: ['', Validators.required],
     message: ['', Validators.required],
@@ -39,11 +40,11 @@ export class Contact {
 
     try {
       await this.contactService.sendToFirestore(payload);
-      alert('Mensaje enviado con éxito');
+      this.notifService.success('Mensaje enviado con éxito');
       this.contactForm.reset();
     } catch (error) {
       console.error(error);
-      alert('Error al enviar el mensaje');
+      this.notifService.error('Error al enviar el mensaje');
     }
   }
 
@@ -54,14 +55,11 @@ export class Contact {
 
     const mailto = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-    // Lanzamos el mailto
     window.location.href = mailto;
 
-    // Esperamos 800ms para ver si el navegador salió de la página
     setTimeout(() => {
       if (!document.hidden) {
-        // Si aún estamos en la página → mailto probablemente falló
-        alert(
+        this.notifService.error(
           'No hemos podido abrir tu aplicación de correo. Asegúrate de tener un cliente de correo configurado.'
         );
       }

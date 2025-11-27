@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -6,6 +6,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 import { DialogPrivacy } from '../dialog-privacy/dialog-privacy';
 import { MatDialog } from '@angular/material/dialog';
+import { NotificationService } from '../../service/notification-service';
 
 @Component({
   selector: 'app-footer',
@@ -14,9 +15,11 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrl: './footer.scss',
 })
 export class Footer {
+  private dialog: MatDialog = inject(MatDialog);
+  private notifService: NotificationService = inject(NotificationService);
   currentYear = new Date().getFullYear();
 
-  constructor(private dialog: MatDialog){}
+  constructor(){}
 
   openPrivacyDialog(): void {
     this.dialog.open(DialogPrivacy, { width: '500px' });
@@ -37,7 +40,7 @@ export class Footer {
     setTimeout(() => {
       if (!document.hidden) {
         // Si aún estamos en la página → mailto probablemente falló
-        alert(
+        this.notifService.error(
           'No hemos podido abrir tu aplicación de correo. Asegúrate de tener un cliente de correo configurado.'
         );
       }
