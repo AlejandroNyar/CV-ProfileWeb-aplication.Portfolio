@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogSettings } from '../dialog-settings/dialog-settings';
-import { CommonModule } from '@angular/common';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
@@ -13,13 +13,12 @@ import { TranslateService } from '../../service/translate-service';
 @Component({
   selector: 'app-quick-settings',
   imports: [
-    CommonModule,
     MatIconModule,
     MatButtonModule,
     MatSlideToggleModule,
     MatSelectModule,
-    MatOptionModule,
-  ],
+    MatOptionModule
+],
   templateUrl: './quick-settings.html',
   styleUrl: './quick-settings.scss',
 })

@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { ServiceItem } from '../../model/serviceItem';
-import { CommonModule } from '@angular/common';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-service-screen',
-  imports: [CommonModule, MatCardModule, MatChipsModule, MatIconModule],
+  imports: [MatCardModule, MatChipsModule, MatIconModule],
   templateUrl: './service-screen.html',
   styleUrl: './service-screen.scss',
 })

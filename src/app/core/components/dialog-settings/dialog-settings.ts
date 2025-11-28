@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -12,14 +12,13 @@ import { TranslateService } from '../../service/translate-service';
 @Component({
   selector: 'app-dialog-settings',
   imports: [
-    CommonModule,
     FormsModule,
     MatDialogModule,
     MatButtonModule,
     MatSlideToggleModule,
     MatSelectModule,
     MatFormFieldModule
-  ],
+],
   templateUrl: './dialog-settings.html',
   styleUrl: './dialog-settings.scss',
 })

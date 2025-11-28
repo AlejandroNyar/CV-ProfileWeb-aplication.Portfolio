@@ -2,28 +2,29 @@
   <h2 class="title">Services</h2>
 
   <div class="grid">
-    <mat-card
-      appearance="outlined"
-      class="service-card"
-      *ngFor="let s of services; trackBy: trackByService"
-    >
-      <mat-card-header>
-        <mat-icon class="service-icon">{{ s.icon }}</mat-icon>
-        <mat-card-title>{{ s.title }}</mat-card-title>
-      </mat-card-header>
-
-      <mat-card-content>
-        <p>{{ s.description }}</p>
-
-        <div class="tech-list">
-          <mat-chip-set aria-label="technologies">
-            <mat-chip *ngFor="let t of s.tech" class="tech-chip">
-              {{ t }}
-            </mat-chip>
-          </mat-chip-set>
-        </div>
-      </mat-card-content>
-    </mat-card>
+    @for (s of services; track trackByService($index, s)) {
+      <mat-card
+        appearance="outlined"
+        class="service-card"
+        >
+        <mat-card-header>
+          <mat-icon class="service-icon">{{ s.icon }}</mat-icon>
+          <mat-card-title>{{ s.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ s.description }}</p>
+          <div class="tech-list">
+            <mat-chip-set aria-label="technologies">
+              @for (t of s.tech; track t) {
+                <mat-chip class="tech-chip">
+                  {{ t }}
+                </mat-chip>
+              }
+            </mat-chip-set>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    }
   </div>
 </section>
 

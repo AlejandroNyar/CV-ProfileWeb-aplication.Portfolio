@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, HostListener } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-about-screen',
-  imports: [CommonModule, MatCardModule],
+  imports: [MatCardModule],
   templateUrl: './about-screen.html',
   styleUrl: './about-screen.scss',
 })

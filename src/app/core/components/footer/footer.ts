@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -10,7 +10,7 @@ import { NotificationService } from '../../service/notification-service';
 
 @Component({
   selector: 'app-footer',
-  imports: [CommonModule, MatIconModule, MatButtonModule, MatDividerModule, RouterModule],
+  imports: [MatIconModule, MatButtonModule, MatDividerModule, RouterModule],
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
 })
