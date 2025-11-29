@@ -5,10 +5,11 @@ import { Contact } from '../contact/contact';
 import { Scroll } from '../../service/scroll';
 import { AboutScreen } from "../about-screen/about-screen";
 import { ServiceScreen } from '../service-screen/service-screen';
+import { PortfolioScreen } from '../portfolio-screen/portfolio-screen';
 
 @Component({
   selector: 'app-main-container',
-  imports: [Footer, HomeScreen, Contact, AboutScreen, ServiceScreen],
+  imports: [Footer, HomeScreen, Contact, AboutScreen, ServiceScreen, PortfolioScreen],
   templateUrl: './main-container.html',
   styleUrl: './main-container.scss',
 })

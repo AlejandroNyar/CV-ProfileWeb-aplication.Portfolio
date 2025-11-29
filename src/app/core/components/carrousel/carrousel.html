@@ -1,0 +1,51 @@
+<section class="portfolio-container">
+
+  <!-- Carrusel (solo visible en móvil) -->
+  <div class="carousel" >
+    <div class="carousel-inner"
+         [ngStyle]="{ transform: 'translateX(-' + (current * 100) + '%)' }">
+
+      @for (project of projectsDoomie; track project.title) {
+        <mat-card class="carousel-card" appearance="outlined">
+          <img [src]="project.img" alt="" class="project-img">
+
+          <mat-card-header>
+            <mat-card-title>{{ project.title }}</mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content>
+            <p>{{ project.description }}</p>
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
+
+    <div class="carousel-controls">
+      <button mat-icon-button color="primary" (click)="prev()">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+
+      <button mat-icon-button color="primary" (click)="next()">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- GRID (solo visible en escritorio) -->
+  <div class="grid">
+    @for (project of this.projectsDoomie; track project.title) {
+      <mat-card class="grid-card" appearance="outlined">
+        <img [src]="project.img" alt="" class="project-img">
+
+        <mat-card-header>
+          <mat-card-title>{{ project.title }}</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p>{{ project.description }}</p>
+        </mat-card-content>
+      </mat-card>
+    }
+  </div>
+
+</section>
