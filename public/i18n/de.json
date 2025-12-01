@@ -4,13 +4,13 @@
       "dialog": {
         "privacy": {
           "title": "Datenschutzrichtlinie und Datenverwaltung",
-          "authText": "In dieser Anwendung werden Ihre Daten gemäß den besten Datenschutzpraktiken verwaltet.",
-          "minData": "Es werden nur die minimal erforderlichen Daten zur Authentifizierung (E-Mail und UID) gespeichert.",
-          "thirdParty": "Es werden keine persönlichen Daten an Dritte weitergegeben.",
-          "firebaseSession": "Die Sitzungsverwaltung erfolgt über Firebase Authentication.",
-          "deleteData": "Sie können die Löschung Ihrer Daten jederzeit per E-Mail beantragen:",
+          "authText": "In dieser Anwendung werden deine Daten nach anerkannten Datenschutzstandards verarbeitet.",
+          "minData": "Es werden nur die minimal notwendigen Daten für die Authentifizierung gespeichert (E-Mail und UID).",
+          "thirdParty": "Personenbezogene Daten werden nicht an Dritte weitergegeben.",
+          "firebaseSession": "Die Sitzungsspeicherung erfolgt über Firebase Authentication.",
+          "deleteData": "Du kannst jederzeit die Löschung deiner Daten anfordern, indem du folgende Adresse kontaktierst:",
           "contactInfo": "alejandropb@gmail.com",
-          "acceptTermsText": "Durch die weitere Nutzung der Anwendung akzeptieren Sie diese Datenschutzrichtlinie und die Verwaltung Ihrer Daten gemäß diesen Bedingungen.",
+          "acceptTermsText": "Mit der weiteren Nutzung der Anwendung akzeptierst du diese Datenschutzrichtlinie und die Verarbeitung deiner Daten gemäß diesen Bedingungen.",
           "acceptTextBtn": "Akzeptieren"
         },
         "settings": {
@@ -20,9 +20,62 @@
           "themeLbl": "Thema",
           "closeBtn": "Schließen"
         }
+      },
+      "home": {
+        "headline": "Individuelle Websites – für dich gestaltet.",
+        "ctaButton": "Starte dein Projekt — Kontaktiere mich",
+        "microCta": "Wenn du mit mir zusammenarbeiten möchtest oder meinen Lebenslauf benötigst, melde dich einfach jederzeit."
+      },
+
+      "about": {
+        "block1Title": "Über mich",
+        "block1Text": "Ich bin Manuel Alejandro Pérez, Frontend-Entwickler mit Schwerpunkt Angular und über drei Jahren Berufserfahrung in der Entwicklung moderner, skalierbarer und wartbarer Webanwendungen. Ich arbeite strukturiert, selbstständig und lege großen Wert auf sauberen Code und gute Nutzererfahrung. Neben der Entwicklung interessiere ich mich für neue Werkzeuge, Prozessoptimierung und kreative wie auch technische Problemlösung.",
+
+        "block2Title": "Was mich auszeichnet",
+        "block2Text": "Ich habe mit Angular und TypeScript in produktiven Projekten für Unternehmen wie Técnicas Competitivas und Ultebra Solutions gearbeitet: Entwicklung kompletter Features, Weiterentwicklung bestehender Systeme, UI-Design, Backend-Entwicklung mit .NET Core und Node.js, Optimierung von SQL-Abfragen sowie agile Teamarbeit. Außerdem habe ich eine Ausbildung im Grafikdesign, was meinen Projekten einen visuellen Mehrwert verleiht — Icons, Vektoren, Layouts und Infografiken. Mein Ziel sind klare, funktionale und ästhetisch ansprechende Lösungen, sowohl im Team als auch als Freelancer."
+      },
+
+      "services": {
+        "frontend": {
+          "title": "Frontend-Entwicklung mit Angular",
+          "desc": "Moderne, schnelle und skalierbare Webanwendungen mit Angular und TypeScript. Saubere Architektur, wiederverwendbare Komponenten, Material Design und Best Practices."
+        },
+        "fullstack": {
+          "title": "Full-Stack-Entwicklung",
+          "desc": "API- und Backend-Entwicklung mit .NET Core oder Node.js. REST-Controller, Datenvalidierung und Service-Integration."
+        },
+        "webDesign": {
+          "title": "Webdesign & Layout",
+          "desc": "Klare, zugängliche und responsive Benutzeroberflächen mit HTML und SCSS. Pixelgenaue Umsetzung und Integration in Angular."
+        },
+        "performance": {
+          "title": "Performance-Optimierung",
+          "desc": "Verbesserung der Ladezeiten, Ressourcennutzung, SQL-Abfragen und DOM-Struktur für maximale reale Performance."
+        },
+        "graphicDesign": {
+          "title": "Grafikdesign für Web",
+          "desc": "Erstellung von Icons, Vektoren, Illustrationen und individuellen Infografiken — ideal für Landingpages, Portfolios und Firmenwebseiten."
+        },
+        "testing": {
+          "title": "Automatisierte Tests (Cypress)",
+          "desc": "End-to-end-Tests mit Cypress, Definition kritischer Flows und Aufbau stabiler Test-Suiten."
+        },
+        "ux": {
+          "title": "UX-Beratung",
+          "desc": "Analyse von Interfaces, Verbesserung der Benutzerfreundlichkeit, Flow-Design, Informationsarchitektur und Mikro-Interaktionen."
+        },
+        "firebase": {
+          "title": "Firebase-Integration",
+          "desc": "Authentifizierung, Datenbank, Dateispeicher und Hosting mit Firebase — ideal für kleine und mittelgroße Projekte."
+        },
+        "agile": {
+          "title": "Arbeiten mit agilen Methoden",
+          "desc": "Aufgabenmanagement, technische Dokumentation, GitFlow und effiziente Zusammenarbeit im Scrum- oder Kanban-Team."
+        }
       }
     }
   },
+
   "errors": {
     "settings": "Fehler beim Parsen des Einstellungs-Cookies",
     "translate": "Fehler beim Laden der Übersetzungen für "

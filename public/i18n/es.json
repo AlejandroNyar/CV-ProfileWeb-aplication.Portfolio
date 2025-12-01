@@ -20,9 +20,62 @@
           "themeLbl": "Tema",
           "closeBtn": "Cerrar"
         }
+      },
+      "home": {
+        "headline": "Webs personalizadas diseñadas para ti.",
+        "ctaButton": "Comienza tu proyecto — Contáctame",
+        "microCta": "¿Quieres colaborar conmigo o necesitas mi CV? Puedes contactarme cuando quieras."
+      },
+
+      "about": {
+        "block1Title": "Sobre mí",
+        "block1Text": "Soy Manuel Alejandro Pérez, Frontend Developer especializado en Angular, con más de 3 años de experiencia profesional creando aplicaciones web modernas, escalables y mantenibles. Me caracterizo por la autonomía, la organización y un enfoque claro en la calidad del código y la experiencia de usuario. Además del desarrollo, disfruto aprendiendo nuevas herramientas, optimizando procesos y aportando soluciones tanto técnicas como creativas.",
+
+        "block2Title": "Lo que me define",
+        "block2Text": "He trabajado con Angular y TypeScript en entornos reales para empresas como Técnicas Competitivas y Ultebra Solutions, participando en desarrollo de funcionalidades completas, mantenimiento evolutivo, diseño de interfaces, backend en .NET Core y Node.js, optimización de consultas SQL y trabajo dentro de equipos ágiles. También tengo formación en diseño gráfico, lo que añade un valor visual a mis proyectos: creación de iconografía, vectores, layouts e infografías. Mi objetivo es crear soluciones claras, funcionales y estéticamente cuidadas, ya sea como parte de un equipo o como freelance."
+      },
+
+      "services": {
+        "frontend": {
+          "title": "Desarrollo Frontend con Angular",
+          "desc": "Creación de aplicaciones web modernas, rápidas y escalables usando Angular y TypeScript. Arquitectura limpia, componentes reutilizables, Material Design y buenas prácticas."
+        },
+        "fullstack": {
+          "title": "Desarrollo Full Stack",
+          "desc": "Implementación de APIs y sistemas backend con .NET Core o Node.js. Controladores REST, validación de datos e integración con servicios."
+        },
+        "webDesign": {
+          "title": "Diseño y maquetación web",
+          "desc": "Diseño de interfaces claras, accesibles y responsive con HTML y SCSS. Maquetación pixel-perfect e integración de diseños en Angular."
+        },
+        "performance": {
+          "title": "Optimización de rendimiento",
+          "desc": "Mejora de la carga inicial, consumo de recursos, consultas SQL y estructura del DOM para maximizar el rendimiento en aplicaciones activas."
+        },
+        "graphicDesign": {
+          "title": "Diseño gráfico aplicado a web",
+          "desc": "Creación de iconos, vectores, ilustraciones e infografías personalizadas. Ideal para landings, portfolios y webs corporativas."
+        },
+        "testing": {
+          "title": "Automatización de tests (Cypress)",
+          "desc": "Implementación de tests E2E modernos seleccionando flujos críticos y creando suites automáticas con Cypress."
+        },
+        "ux": {
+          "title": "Consultoría y mejora de UX",
+          "desc": "Análisis de interfaces, mejora de usabilidad, diseño de flujos, arquitectura de información y microinteracciones."
+        },
+        "firebase": {
+          "title": "Integración con Firebase",
+          "desc": "Autenticación, base de datos, almacenamiento de archivos y despliegue con Firebase para proyectos pequeños y medianos."
+        },
+        "agile": {
+          "title": "Trabajo con metodologías ágiles",
+          "desc": "Gestión de tareas, documentación técnica, GitFlow y colaboración eficiente dentro de equipos Scrum o Kanban."
+        }
       }
     }
   },
+
   "errors": {
     "settings": "Error al parsear cookie de configuración",
     "translate": "Error cargando traducciones para "

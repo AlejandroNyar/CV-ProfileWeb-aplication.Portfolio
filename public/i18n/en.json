@@ -4,13 +4,13 @@
       "dialog": {
         "privacy": {
           "title": "Privacy Policy and Data Management",
-          "authText": "In this application, your data is managed according to best privacy practices.",
-          "minData": "Only the minimum data necessary for authentication (email and UID) is stored.",
-          "thirdParty": "No personal data is shared with third parties.",
+          "authText": "In this application, your data is handled following best privacy practices.",
+          "minData": "Only the minimum data required for authentication is stored (email and UID).",
+          "thirdParty": "No personal information is shared with third parties.",
           "firebaseSession": "Session storage is managed through Firebase Authentication.",
-          "deleteData": "You can request deletion of your data at any time by contacting the following email:",
+          "deleteData": "You may request the deletion of your data at any time by contacting:",
           "contactInfo": "alejandropb@gmail.com",
-          "acceptTermsText": "By continuing to use this application, you accept this privacy policy and the management of your data according to these terms.",
+          "acceptTermsText": "By continuing to use this application, you accept this privacy policy and the management of your data under these terms.",
           "acceptTextBtn": "Accept"
         },
         "settings": {
@@ -19,6 +19,58 @@
           "languageLbl": "Language",
           "themeLbl": "Theme",
           "closeBtn": "Close"
+        }
+      },
+      "home": {
+        "headline": "Custom websites designed for you.",
+        "ctaButton": "Start your project — Contact me",
+        "microCta": "If you'd like to work with me or request my CV, feel free to reach out anytime."
+      },
+
+      "about": {
+        "block1Title": "About me",
+        "block1Text": "I’m Manuel Alejandro Pérez, a Frontend Developer specialized in Angular with over 3 years of professional experience building modern, scalable and maintainable web applications. I’m known for being autonomous, organized and focused on code quality and user experience. Beyond development, I enjoy learning new tools, optimizing workflows, and offering both technical and creative solutions.",
+
+        "block2Title": "What defines me",
+        "block2Text": "I’ve worked with Angular and TypeScript in real production environments for companies such as Técnicas Competitivas and Ultebra Solutions, contributing to full features, ongoing maintenance, interface design, backend work with .NET Core and Node.js, SQL query optimization and agile teamwork. I also have graphic design training, which enhances my projects visually through custom icons, vectors, layouts and infographics. My goal is to deliver clean, functional and visually refined solutions, either as part of a team or as a freelancer."
+      },
+
+      "services": {
+        "frontend": {
+          "title": "Frontend Development with Angular",
+          "desc": "Building modern, fast and scalable web applications using Angular and TypeScript. Clean architecture, reusable components, Material Design and best practices."
+        },
+        "fullstack": {
+          "title": "Full Stack Development",
+          "desc": "API and backend system development with .NET Core or Node.js. REST controllers, data validation and service integration."
+        },
+        "webDesign": {
+          "title": "Web Design & Layout",
+          "desc": "Clear, accessible and responsive user interfaces using HTML and SCSS. Pixel-perfect layout and seamless integration into Angular."
+        },
+        "performance": {
+          "title": "Performance Optimization",
+          "desc": "Improving loading performance, resource usage, SQL queries and DOM structure to maximize real-world efficiency."
+        },
+        "graphicDesign": {
+          "title": "Graphic Design for Web",
+          "desc": "Creation of icons, vectors, illustrations and custom infographics — perfect for landings, portfolios or corporate websites."
+        },
+        "testing": {
+          "title": "Automated Testing (Cypress)",
+          "desc": "End-to-end testing with Cypress, selecting critical flows and building stable automated suites."
+        },
+        "ux": {
+          "title": "UX Consulting",
+          "desc": "Interface analysis, usability improvement, flow design, information architecture and micro-interactions."
+        },
+        "firebase": {
+          "title": "Firebase Integration",
+          "desc": "Authentication, database, file storage and hosting with Firebase — ideal for small and medium-sized projects."
+        },
+        "agile": {
+          "title": "Agile Work Methodologies",
+          "desc": "Task management, technical documentation, GitFlow and efficient collaboration in Scrum or Kanban teams."
         }
       }
     }

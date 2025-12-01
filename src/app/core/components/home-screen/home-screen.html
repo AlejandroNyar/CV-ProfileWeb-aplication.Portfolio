@@ -6,9 +6,14 @@
       <h1 class="subtitle-text shadow-default">Custom web</h1>
       <h1 class="subtitle-text shadow-default">Designed for you</h1>
     </div>
-    <button matButton="elevated" class="custom-button">
-        <span class="exclused-mix" (click)="scrollSvc.goToLast()">Request Now for your Free Quote</span>
-    </button>
+    <div class="btn-wrapper">
+      <button matButton="elevated" class="custom-button">
+        <span class="exclused-mix" (click)="scrollSvc.goToLast()"
+          >Contact me or request a quote</span
+        >
+      </button>
+      <p class="micro-cta">{{this.translateService.t("html.components.home.microCta")()}}</p>
+    </div>
   </div>
   <div class="grid-wrapper">
     <img src="img/grid1.svg" class="grid1 reversed" alt="grid1" />

@@ -36,6 +36,7 @@ export class NavBar {
   public theme: ThemeService = inject(ThemeService);
   public translateService: TranslateService = inject(TranslateService);
 
+  public lang = this.translateService.currentLang;
   public supportedLang: supportedLangs[] = this.translateService.getSupportedLanguages()
 
   sections : SectionItem[] = this.scroll.getSections();
@@ -60,7 +61,6 @@ export class NavBar {
     return this.theme.isDark();
   }
 
-  lang = signal(this.translateService.getLanguage());
   changeLang(lang: string) {
     this.translateService.setLanguage(lang);
     this.lang.set(lang);

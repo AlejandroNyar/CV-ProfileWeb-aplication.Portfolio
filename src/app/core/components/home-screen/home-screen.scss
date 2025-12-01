@@ -54,3 +54,16 @@
     }
   }
 }
+.btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .micro-cta {
+    margin-top: 8px;
+    font-size: 12px;
+    max-width: 60%;
+    opacity: 0.7;
+    text-align: center;
+  }
+}
