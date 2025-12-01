@@ -1,43 +1,102 @@
-import { AfterViewInit, Component, ElementRef, HostListener, inject, OnInit, QueryList, ViewChildren } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  HostListener,
+  inject,
+  QueryList,
+  ViewChildren,
+  PLATFORM_ID,
+  signal,
+  WritableSignal,
+  effect,
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+
 import { Footer } from '../footer/footer';
 import { HomeScreen } from '../home-screen/home-screen';
 import { Contact } from '../contact/contact';
 import { Scroll } from '../../service/scroll';
-import { AboutScreen } from "../about-screen/about-screen";
+import { AboutScreen } from '../about-screen/about-screen';
 import { ServiceScreen } from '../service-screen/service-screen';
-import { PortfolioScreen } from '../portfolio-screen/portfolio-screen';
 
 @Component({
   selector: 'app-main-container',
-  imports: [Footer, HomeScreen, Contact, AboutScreen, ServiceScreen, PortfolioScreen],
+  imports: [Footer, HomeScreen, Contact, AboutScreen, ServiceScreen],
   templateUrl: './main-container.html',
   styleUrl: './main-container.scss',
 })
 export class MainContainer implements AfterViewInit {
-
   @ViewChildren('sectionEl') sections!: QueryList<ElementRef<HTMLElement>>;
 
-  public scrollSvc = inject(Scroll);
-  public footerVisible: boolean = false;
+  private platformId = inject(PLATFORM_ID);
 
-  // bloqueo para evitar múltiples triggers rápidos
+  public scrollSvc = inject(Scroll);
+
   private wheelLock = false;
   private touchStartY: number | null = null;
 
-  // reactive local snapshot for template binding
   currentIndex = this.scrollSvc.currentIndex;
 
-  
+  public isDesktop: WritableSignal<boolean> = signal(false);
+  public footerVisible: boolean = false;
+
+  private sectionScroll = effect(() => {
+    const target = this.scrollSvc.targetSection();
+    if (!this.sections?.length) return;
+    if (target) {
+      this.scrollToSection(target);
+    }
+  });
+
+  constructor() {}
+
+  ngOnInit() {
+    this.detectDeviceType();
+  }
+
   ngAfterViewInit(): void {
     this.updateTotal();
     this.sections.changes.subscribe(() => this.updateTotal());
   }
 
-  updateTotal(){
-    this.scrollSvc.setTotalScreens(this.sections.length)
+  private detectDeviceType() {
+    if (isPlatformBrowser(this.platformId)) {
+      const width = window.innerWidth;
+      this.isDesktop.set(width >= 900);
+    }
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.detectDeviceType();
+  }
+
+  updateTotal() {
+    this.scrollSvc.setTotalScreens(this.sections.length);
+  }
+
+  public scrollToSection(sectionName: string) {
+    //if (!this.isBrowser) return
+    const section = this.sections.toArray().find((s) => {
+      return s.nativeElement.id == sectionName;
+    });
+    if (!section) return;
+
+    if (this.isDesktop()) {
+      const index = this.sections.toArray().indexOf(section);
+      this.scrollSvc.goTo(index);
+    } else {
+      section.nativeElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
   }
 
   nextScreen(): void {
+    if (!this.isDesktop()) return;
+
     if (!this.scrollSvc.isLastIndex()) {
       if (this.wheelLock) return;
       this.wheelLock = true;
@@ -51,6 +110,8 @@ export class MainContainer implements AfterViewInit {
   }
 
   prevScreen(): void {
+    if (!this.isDesktop()) return;
+
     if (this.scrollSvc.isLastIndex() && this.footerVisible) {
       if (this.wheelLock) return;
       this.footerVisible = false;
@@ -63,12 +124,14 @@ export class MainContainer implements AfterViewInit {
   }
 
   get dots(): number[] {
-    return Array.from({ length: this.scrollSvc.total()}, (_, i) => i);
+    return Array.from({ length: this.scrollSvc.total() }, (_, i) => i);
   }
 
-  // Rueda del ratón / trackpad
+  // --- EVENTOS SOLO EN ESCRITORIO ---
   @HostListener('wheel', ['$event'])
   onWheel(event: WheelEvent): void {
+    if (!this.isDesktop()) return;
+
     if (event.deltaY > 10) {
       this.nextScreen();
     } else if (event.deltaY < -10) {
@@ -78,33 +141,38 @@ export class MainContainer implements AfterViewInit {
 
   @HostListener('touchstart', ['$event'])
   onTouchStart(ev: TouchEvent) {
+    if (!this.isDesktop()) return;
     this.touchStartY = ev.touches?.[0]?.clientY ?? null;
   }
 
   @HostListener('touchend', ['$event'])
   onTouchEnd(ev: TouchEvent) {
+    if (!this.isDesktop()) return;
     if (this.touchStartY == null) return;
+
     const endY = ev.changedTouches?.[0]?.clientY ?? 0;
     const diff = this.touchStartY - endY;
-    const threshold = 40; // deslizar 40px
+    const threshold = 40;
+
     if (diff > threshold) this.nextScreen();
     else if (diff < -threshold) this.prevScreen();
+
     this.touchStartY = null;
   }
 
-  // Teclas de flecha
   @HostListener('window:keydown.arrowdown')
   onArrowDown(): void {
+    if (!this.isDesktop()) return;
     this.nextScreen();
   }
 
   @HostListener('window:keydown.arrowup')
   onArrowUp(): void {
+    if (!this.isDesktop()) return;
     this.prevScreen();
   }
 
-  // Utilidad para enlazar clase de "logo pequeño"
   isHeaderLogo() {
-    return this.currentIndex() > 0; // si estamos fuera de Home
+    return this.currentIndex() > 0;
   }
 }

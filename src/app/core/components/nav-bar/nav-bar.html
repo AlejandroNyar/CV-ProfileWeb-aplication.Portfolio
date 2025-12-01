@@ -14,7 +14,7 @@
       <mat-nav-list>
         @for (sec of this.sections; track $index) {
         <mat-list-item
-          (click)="goTo($index); drawer.close()"
+          (click)="goTo(sec.sectionName); drawer.close()"
           class="list-item"
           [class.active]="isActive($index)"
         >
@@ -58,7 +58,7 @@
 
     <div class="desktop-only">
       @for (sec of this.sections; track $index) {
-      <button mat-button (click)="goTo($index)" [class.active]="isActive($index)">
+      <button mat-button (click)="goTo(sec.sectionName)" [class.active]="isActive($index)">
         {{ sec.label }}
       </button>
       }
@@ -77,6 +77,6 @@
 
   <!-- Content slot -->
   <ng-content class="content">
-    <app-main-container></app-main-container>
+    <app-main-container #mainContainer></app-main-container>
   </ng-content>
 </mat-sidenav-container>

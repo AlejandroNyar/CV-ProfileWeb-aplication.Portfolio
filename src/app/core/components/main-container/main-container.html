@@ -1,41 +1,48 @@
-<div class="fullpage-root" [class.header-logo-active]="isHeaderLogo()">
-  <div class="sections" id="sections" [style.transform]="'translateY(calc(-1 * ' + currentIndex() + ' * 100vh))'">
-    <section #sectionEl class="section home">
+<div class="fullpage-root"
+     [class.desktop]="isDesktop()"
+     [class.mobile]="!isDesktop()"
+     [class.header-logo-active]="isHeaderLogo() && isDesktop()">
+
+  <div class="sections" id="sections"
+       [style.transform]="isDesktop()
+          ? 'translateY(calc(-1 * ' + currentIndex() + ' * 100vh))'
+          : 'none'">
+
+    <section #sectionEl class="section home" id="home">
       <app-home-screen></app-home-screen>
     </section>
-    <section #sectionEl class="section about">
+
+    <section #sectionEl class="section about" id="about">
       <app-about-screen></app-about-screen>
     </section>
-    <section #sectionEl class="section service">
+
+    <section #sectionEl class="section service" id="service">
       <app-service-screen></app-service-screen>
     </section>
-    <section #sectionEl class="section portfolio">
+
+    <!-- <section #sectionEl class="section portfolio" id="portfolio">
       <div class="portfolio-wrapper">
         <app-portfolio-screen></app-portfolio-screen>
       </div>
-    </section>
-    <section #sectionEl class="section contact">
+    </section> -->
+
+    <section #sectionEl class="section contact" id="contact">
       <app-contact></app-contact>
     </section>
   </div>
 
-  <section class="contact-screen">
-    ...
-    @if(!footerVisible){
-        <div class="footer-hint">▼ más</div>
-    }
-  </section>
+  <app-footer class="footer" [class.hidden]="this.isDesktop()" [class.visible]="this.footerVisible"></app-footer>
 
-  <app-footer class="footer" [class.visible]="footerVisible"></app-footer>
-
-  <!-- Indicador de avance (small dots) -->
-  <nav class="dots">
-    @for (i of dots; track $index) {
-    <button
-      class="dot"
-      [class.active]="currentIndex() === $index"
-      (click)="scrollSvc.goTo($index)"
-    ></button>
-    }
-  </nav>
+  <!-- dots -->
+   @if(this.isDesktop()){
+     <nav class="dots">
+       @for (i of dots; track $index) {
+         <button
+           class="dot"
+           [class.active]="currentIndex() === $index"
+           (click)="scrollSvc.goTo($index)">
+         </button>
+       }
+     </nav>
+   }
 </div>

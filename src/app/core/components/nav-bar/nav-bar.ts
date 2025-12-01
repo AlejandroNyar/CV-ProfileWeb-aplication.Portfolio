@@ -11,6 +11,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { MainContainer } from '../main-container/main-container';
 import { supportedLangs } from '../../model/suportedLanguage';
+import { SectionItem } from '../../model/sectionItem';
 
 @Component({
   selector: 'app-nav-bar',
@@ -30,24 +31,20 @@ import { supportedLangs } from '../../model/suportedLanguage';
 })
 export class NavBar {
   @ViewChild('drawer') drawer!: MatSidenav;
+
   public scroll: Scroll = inject(Scroll);
   public theme: ThemeService = inject(ThemeService);
   public translateService: TranslateService = inject(TranslateService);
 
   public supportedLang: supportedLangs[] = this.translateService.getSupportedLanguages()
 
-  sections = [
-    { label: 'Home' },
-    { label: 'Who am I' },
-    { label: 'Services' },
-    { label: 'Work' },
-    { label: 'Contact' },
-  ];
+  sections : SectionItem[] = this.scroll.getSections();
 
-  constructor() {}
+  constructor() {
+  }
 
-  goTo(i: number) {
-    this.scroll.goTo(i);
+  goTo(sectionName: string) {
+    this.scroll.goToSection(sectionName);
   }
 
   isActive(i: number) {
