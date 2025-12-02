@@ -22,7 +22,8 @@
     background: #ededed !important; /* color principal */
     color: #dfc5ab !important; /* texto */
     font-family: 'Inria Serif', serif !important;
-    border-radius: 10px;
+    font-size: larger;
+    border-radius: 20px !important;
     ::ng-deep .mdc-button__label {
       mix-blend-mode: difference !important;
     }

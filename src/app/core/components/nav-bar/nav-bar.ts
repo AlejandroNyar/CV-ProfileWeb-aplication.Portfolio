@@ -12,6 +12,7 @@ import { MatOption, MatSelect } from '@angular/material/select';
 import { MainContainer } from '../main-container/main-container';
 import { supportedLangs } from '../../model/suportedLanguage';
 import { SectionItem } from '../../model/sectionItem';
+import { CookiesButton } from "../cookies-button/cookies-button";
 
 @Component({
   selector: 'app-nav-bar',
@@ -25,7 +26,8 @@ import { SectionItem } from '../../model/sectionItem';
     MatSlideToggleModule,
     MatSelect,
     MatOption,
-  ],
+    CookiesButton
+],
   templateUrl: './nav-bar.html',
   styleUrl: './nav-bar.scss',
 })

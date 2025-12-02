@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Preferencias de privacidad</h2>
+
+<mat-dialog-content>
+  <p>
+    Esta aplicación solo almacena configuraciones locales como idioma y tema. No se recopilan datos
+    personales ni se usan cookies de terceros.
+  </p>
+
+  <mat-slide-toggle [(ngModel)]="prefsEnabled" name="pref_enabled">Permitir guardar preferencias</mat-slide-toggle>
+
+  @if(!prefsEnabled){
+  <p>Las preferencias no se guardarán. La app funcionará en modo predeterminado.</p>
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button matButton="elevated" mat-dialog-close>Cancelar</button>
+  <button matButton="elevated" color="primary" (click)="save()">Guardar</button>
+</mat-dialog-actions>

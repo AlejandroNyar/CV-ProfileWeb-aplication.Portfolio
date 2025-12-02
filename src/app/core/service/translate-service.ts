@@ -3,15 +3,19 @@ import { HttpClient } from '@angular/common/http';
 import { isPlatformBrowser } from '@angular/common';
 import { firstValueFrom, of, catchError } from 'rxjs';
 import { supportedLangs } from '../model/suportedLanguage';
+import { Cookie } from './cookie';
 
 @Injectable({ providedIn: 'root' })
 export class TranslateService {
   private http = inject(HttpClient);
+  private cookieService: Cookie = inject(Cookie);
   private platformId = inject(PLATFORM_ID);
   private isBrowser = isPlatformBrowser(this.platformId);
 
   private translations = signal<Record<string, any>>({});
   public currentLang = signal<string>('es');
+
+  private cookieName: string = 'app_settings';
 
   private supported: supportedLangs[] = [
     { in: 'en', lang: 'English', svg: 'img/i18n/Great Britain.svg' },
@@ -27,7 +31,7 @@ export class TranslateService {
   private detectLanguage(): string {
     if (!this.isBrowser) return 'es';
 
-    const cookie = this.getCookie('app_settings');
+    const cookie = this.cookieService.getCookie(this.cookieName);
     if (cookie) {
       try {
         const parsed = JSON.parse(cookie);
@@ -54,7 +58,7 @@ export class TranslateService {
       this.translations.set(data || {});
       this.currentLang.set(lang);
 
-      if (this.isBrowser) this.updateCookie(lang);
+      if (this.isBrowser) this.cookieService.updateCookie(this.cookieName,lang);
 
     } catch (e) {
       console.error('Error crítico cargando traducciones:', e);
@@ -88,27 +92,5 @@ export class TranslateService {
 
   private getNestedValue(obj: Record<string, any>, path: string) {
     return path.split('.').reduce((acc: any, key) => acc?.[key], obj);
-  }
-
-  private getCookie(name: string): string | null {
-    if (!this.isBrowser) return null;
-
-    const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
-    return match ? decodeURIComponent(match[1]) : null;
-  }
-
-  private updateCookie(language: string) {
-    if (!this.isBrowser) return;
-
-    const expires = new Date();
-    expires.setMonth(expires.getMonth() + 1);
-
-    const settings = {
-      language,
-    };
-
-    document.cookie =
-      `app_settings=${encodeURIComponent(JSON.stringify(settings))};` +
-      `expires=${expires.toUTCString()};path=/;SameSite=Lax`;
   }
 }
