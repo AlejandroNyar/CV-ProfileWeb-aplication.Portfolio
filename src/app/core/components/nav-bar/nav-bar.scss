@@ -13,6 +13,7 @@
   }
   .desktop-only {
     display: inline-flex;
+    gap: 15px;
   }
 }
 
@@ -72,6 +73,10 @@
   }
 }
 
+.selectLang {
+  text-align: center;
+  padding: 0.5rem 0;
+}
 
 .spacer {
   flex: 1;

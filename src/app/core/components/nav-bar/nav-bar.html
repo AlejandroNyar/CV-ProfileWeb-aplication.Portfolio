@@ -67,7 +67,7 @@
         <mat-icon>{{ isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
       </button>
 
-      <mat-select [value]="lang()" (selectionChange)="changeLang($event.value)">
+      <mat-select [value]="lang()" (selectionChange)="changeLang($event.value)" class="selectLang">
         @for(langElem of this.supportedLang; track $index){
         <mat-option value="{{ langElem.in }}">{{ langElem.lang }}</mat-option>
         }
