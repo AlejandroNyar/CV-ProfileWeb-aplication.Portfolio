@@ -1,4 +1,4 @@
-import { Component, inject, signal, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, inject, signal, ViewChild, WritableSignal } from '@angular/core';
 import { Scroll } from '../../service/scroll';
 import { ThemeService } from '../../service/theme-service';
 import { TranslateService } from '../../service/translate-service';
@@ -13,6 +13,7 @@ import { MainContainer } from '../main-container/main-container';
 import { supportedLangs } from '../../model/suportedLanguage';
 import { SectionItem } from '../../model/sectionItem';
 import { CookiesButton } from "../cookies-button/cookies-button";
+import { Cookie } from '../../service/cookie';
 
 @Component({
   selector: 'app-nav-bar',
@@ -31,7 +32,7 @@ import { CookiesButton } from "../cookies-button/cookies-button";
   templateUrl: './nav-bar.html',
   styleUrl: './nav-bar.scss',
 })
-export class NavBar {
+export class NavBar implements AfterViewInit{
   @ViewChild('drawer') drawer!: MatSidenav;
 
   public scroll: Scroll = inject(Scroll);
@@ -46,6 +47,9 @@ export class NavBar {
   constructor() {
   }
 
+  ngAfterViewInit(): void {
+  }
+
   goTo(sectionName: string) {
     this.scroll.goToSection(sectionName);
   }
@@ -54,7 +58,6 @@ export class NavBar {
     return this.scroll.currentIndex() === i;
   }
 
-  // theme
   toggleTheme() {
     this.theme.toggle();
   }

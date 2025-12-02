@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ServiceItem } from '../../model/serviceItem';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslateService } from '../../service/translate-service';
 
 @Component({
   selector: 'app-service-screen',
@@ -12,45 +13,64 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './service-screen.scss',
 })
 export class ServiceScreen {
+  public translateServ: TranslateService = inject(TranslateService);
   services: ServiceItem[] = [
     {
       icon: 'code',
-      title: 'Frontend Development',
+      title: 'html.components.services.frontend.title',
       description:
-        'Aplicaciones modernas, rápidas y mantenibles con Angular, TypeScript y mejores prácticas.',
+        'html.components.services.frontend.desc',
       tech: ['Angular', 'TypeScript', 'RxJS'],
     },
     {
       icon: 'storage',
-      title: 'Backend Development',
+      title: 'html.components.services.fullstack.title',
       description:
-        'APIs robustas, escalables y seguras usando Node.js, Express y bases de datos SQL/NoSQL.',
+        'html.components.services.fullstack.desc',
       tech: ['Node.js', 'Express', 'PostgreSQL', 'MongoDB'],
     },
-    // {
-    //   icon: 'design_services',
-    //   title: 'UI / UX Prototyping',
-    //   description: 'Experiencias intuitivas, centradas en el usuario, y diseño antes del código.',
-    //   tech: ['Figma', 'UI Kits', 'Wireframes'],
-    // },
-    // {
-    //   icon: 'api',
-    //   title: 'API Integrations',
-    //   description: 'Integraciones con servicios externos, autenticación y automatización.',
-    //   tech: ['REST', 'OAuth2', 'Integrations'],
-    // },
-    // {
-    //   icon: 'build_circle',
-    //   title: 'Automation & Internal Tools',
-    //   description: 'Herramientas personalizadas para aumentar productividad y reducir errores.',
-    //   tech: ['Scripts', 'Dashboards', 'Automation'],
-    // },
-    // {
-    //   icon: 'support',
-    //   title: 'Consulting & Maintenance',
-    //   description: 'Mejora de código, optimizaciones de rendimiento y soporte continuo.',
-    //   tech: ['Refactoring', 'Debugging', 'Performance'],
-    // },
+    {
+      icon: 'design_services',
+      title: 'html.components.services.webDesign.title',
+      description: 'html.components.services.webDesign.desc',
+      tech: ['Figma', 'UI Kits', 'Wireframes'],
+    },
+    {
+      icon: 'api',
+      title: 'html.components.services.performance.title',
+      description: 'html.components.services.performance.desc',
+      tech: ['REST', 'OAuth2', 'Integrations'],
+    },
+    {
+      icon: 'build_circle',
+      title: 'html.components.services.graphicDesign.title',
+      description: 'html.components.services.graphicDesign.desc',
+      tech: ['Scripts', 'Dashboards', 'Automation'],
+    },
+    {
+      icon: 'support',
+      title: 'html.components.services.testing.title',
+      description: 'html.components.services.testing.desc',
+      tech: ['Refactoring', 'Debugging', 'Performance'],
+    },
+    {
+      icon: 'support',
+      title: 'html.components.services.ux.title',
+      description: 'html.components.services.ux.desc',
+      tech: ['Figma', 'Debugging', 'Performance'],
+    },
+    {
+      icon: 'support',
+      title: 'html.components.services.firebase.title',
+      description: 'html.components.services.firebase.desc',
+      tech: ['Firebase'],
+    },
+    {
+      icon: 'support',
+      title: 'Consulting & Maintenance',
+      description: 'Mejora de código, optimizaciones de rendimiento y soporte continuo.',
+      tech: ['Refactoring', 'Debugging', 'Performance'],
+    },
   ];
 
   trackByService(index: number, item: ServiceItem) {

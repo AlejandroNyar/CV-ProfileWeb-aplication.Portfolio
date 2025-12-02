@@ -1,7 +1,7 @@
 .services-section {
   padding: 1rem 3rem;
   min-height: 90vh;
-  max-width: 100%;
+  max-width: 1500px;
   margin: auto;
 
   .title {
@@ -25,20 +25,28 @@
     }
   }
 
+  .service-icon {
+    font-size: 2rem;
+    overflow: visible;
+    position: relative;
+    top: 0;
+    right: 0;
+    color: var(--md-sys-color-primary);
+  }
+
   .service-card {
     border-radius: 1.5rem;
+    align-items: flex-end;
+    text-align: center;
     background: var(--md-sys-color-surface-container-low);
     box-shadow: var(--md-sys-elevation-level2);
 
     mat-card-header {
       display: flex;
       align-items: center;
+      justify-content: center;
+      width: 90%;
       gap: 1rem;
-
-      .service-icon {
-        font-size: 2rem;
-        color: var(--md-sys-color-primary);
-      }
 
       mat-card-title {
         font-size: 1.3rem;
@@ -49,18 +57,6 @@
     p {
       opacity: 0.9;
       line-height: 1.5;
-    }
-
-    .tech-list {
-      margin-top: 1rem;
-
-      .tech-chip {
-        background: var(--md-sys-color-secondary-container);
-        color: var(--md-sys-color-on-secondary-container);
-        border-radius: 1rem;
-        font-size: 0.85rem;
-        padding: 0 0.4rem;
-      }
     }
   }
 }

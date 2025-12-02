@@ -15,6 +15,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { TranslateService } from './core/service/translate-service';
+import { ThemeService } from './core/service/theme-service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -27,7 +28,9 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch()),
     provideEnvironmentInitializer(() => {
       const translate = inject(TranslateService);
-      translate.initialize(); // inicializa antes del render
+      const theme = inject(ThemeService);
+      translate.initialize(); 
+      theme.initialize();
     }),
   ],
 };

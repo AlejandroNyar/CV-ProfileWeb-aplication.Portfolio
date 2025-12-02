@@ -7,12 +7,12 @@
         appearance="outlined"
         class="service-card"
         >
+        <mat-icon class="service-icon">{{ s.icon }}</mat-icon>
         <mat-card-header>
-          <mat-icon class="service-icon">{{ s.icon }}</mat-icon>
-          <mat-card-title>{{ s.title }}</mat-card-title>
+          <mat-card-title>{{ this.translateServ.t(s.title)() }}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <p>{{ s.description }}</p>
+          <p>{{ this.translateServ.t(s.description)() }}</p>
           <div class="tech-list">
             <mat-chip-set aria-label="technologies">
               @for (t of s.tech; track t) {
