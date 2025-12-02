@@ -26,7 +26,7 @@
         <mat-divider class="divider"></mat-divider>
         <mat-list-item class="d-flex content-center">
           <button mat-icon-button (click)="toggleTheme()">
-            <mat-icon>{{ this.isDark() ? 'dark_mode' : 'light_mode' }}</mat-icon>
+            <mat-icon>{{ this.isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
           </button>
         </mat-list-item>
 
@@ -64,7 +64,7 @@
       }
 
       <button mat-icon-button (click)="toggleTheme()">
-        <mat-icon>{{ this.isDark() ? 'dark_mode' : 'light_mode' }}</mat-icon>
+        <mat-icon>{{ this.isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
       </button>
 
       <mat-select [value]="lang()" (selectionChange)="changeLang($event.value)" class="selectLang">

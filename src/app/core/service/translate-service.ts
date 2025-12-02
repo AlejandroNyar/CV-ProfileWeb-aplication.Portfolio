@@ -7,15 +7,16 @@ import { Cookie } from './cookie';
 
 @Injectable({ providedIn: 'root' })
 export class TranslateService {
+
   private http = inject(HttpClient);
-  private cookieService: Cookie = inject(Cookie);
+  private cookieService = inject(Cookie);
   private platformId = inject(PLATFORM_ID);
   private isBrowser = isPlatformBrowser(this.platformId);
 
+  private initialized = false;
+
   private translations = signal<Record<string, any>>({});
   public currentLang = signal<string>('es');
-
-  private cookieName: string = 'app_settings';
 
   private supported: supportedLangs[] = [
     { in: 'en', lang: 'English', svg: 'img/i18n/Great Britain.svg' },
@@ -24,20 +25,27 @@ export class TranslateService {
   ];
 
   async initialize(): Promise<void> {
+    if (!this.isBrowser || this.initialized) return;
+
     const lang = this.detectLanguage();
     await this.loadTranslations(lang);
+    this.initialized = true;
   }
 
   private detectLanguage(): string {
     if (!this.isBrowser) return 'es';
 
-    const cookie = this.cookieService.getCookie(this.cookieName);
+    const cookie = this.cookieService.getCookie();
+
     if (cookie) {
       try {
         const parsed = JSON.parse(cookie);
-        if (parsed.language && this.isSupported(parsed.language)) return parsed.language;
+        if (parsed.language && this.isSupported(parsed.language)) {
+          return parsed.language;
+        }
       } catch {}
     }
+
     const browserLang = navigator.language.split('-')[0];
     if (this.isSupported(browserLang)) return browserLang;
 
@@ -57,8 +65,16 @@ export class TranslateService {
 
       this.translations.set(data || {});
       this.currentLang.set(lang);
+      const existing = this.cookieService.getCookie();
+      let parsed: any = {};
 
-      if (this.isBrowser) this.cookieService.updateCookie(this.cookieName,lang);
+      try {
+        parsed = existing ? JSON.parse(existing) : {};
+      } catch {}
+
+      if (parsed.language !== lang) {
+        this.cookieService.updateCookie("language", lang);
+      }
 
     } catch (e) {
       console.error('Error crítico cargando traducciones:', e);
@@ -72,8 +88,11 @@ export class TranslateService {
     });
   }
 
-  async setLanguage(lang: string) {
-    if (!this.isSupported(lang) || lang === this.currentLang()) return;
+  async setLanguage(lang: string): Promise<void> {
+    if (!this.initialized) return;
+    if (!this.isSupported(lang)) return;
+    if (lang === this.currentLang()) return;
+
     await this.loadTranslations(lang);
   }
 
@@ -84,7 +103,6 @@ export class TranslateService {
   getSupportedLanguages() {
     return this.supported;
   }
-
 
   private isSupported(code: string): boolean {
     return this.supported.some(l => l.in === code);

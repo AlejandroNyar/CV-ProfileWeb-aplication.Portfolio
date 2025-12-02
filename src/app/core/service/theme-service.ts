@@ -1,4 +1,4 @@
-import { inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
+import { afterRenderEffect, effect, inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { Cookie } from './cookie';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -8,38 +8,59 @@ import { isPlatformBrowser } from '@angular/common';
 export class ThemeService {
   private dark = signal(false);
   private cookieService: Cookie = inject(Cookie);
-  private cookieName: string = 'app_settings';
-  
+  private initialized = false;
+
   private platformId = inject(PLATFORM_ID);
   private isBrowser = isPlatformBrowser(this.platformId);
 
+  constructor() {
+    afterRenderEffect(() => {
+      this.applyThemeClass(this.isDark());
+    });
+
+    effect(() => {
+      if (!this.isBrowser || !this.initialized) return;
+
+      const value = this.dark();
+      const cookie = this.cookieService.getCookie('settings');
+
+      let parsed: any = {};
+      try {
+        parsed = cookie ? JSON.parse(cookie) : {};
+      } catch {}
+
+      // ❗ Solo actualizar si cambió
+      if (parsed.darkTheme !== value) {
+        this.cookieService.updateCookie('darkTheme', value);
+      }
+    });
+  }
+
+  private applyThemeClass(isDarkMode: boolean) {
+    if (!this.isBrowser) return;
+    document.body.classList.toggle('dark-theme', isDarkMode);
+  }
+
   async initialize(): Promise<void> {
-    const lang = this.detectTheme();
-    await this.loadTheme(lang);
+    const theme = this.detectTheme();
+    this.dark.set(theme);
+    this.initialized = true;
   }
 
   private detectTheme(): boolean {
     if (!this.isBrowser) return false;
 
-    const cookie = this.cookieService.getCookie(this.cookieName);
+    const cookie = this.cookieService.getCookie();
     if (cookie) {
       try {
         const parsed = JSON.parse(cookie);
-        if (parsed.dark) return parsed.dark;
+        if (typeof parsed.darkTheme === 'boolean') {
+          return parsed.darkTheme;
+        }
       } catch {}
     }
-    const browserTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+    const browserTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
     return browserTheme;
-  }
-
-  private async loadTheme(lang: boolean): Promise<void> {
-    try {
-      this.dark.set(lang);
-      console.log("theme: ", lang.toString())
-      if (this.isBrowser) this.cookieService.updateCookie(this.cookieName, lang.toString());
-    } catch (e) {
-      console.error('Error crítico cargando tema:', e);
-    }
   }
 
   isDark() {
@@ -48,7 +69,5 @@ export class ThemeService {
 
   toggle() {
     this.dark.update((x) => !x);
-    console.log("toggle", this.dark())
-    document.body.classList.toggle('dark-theme', this.dark());
   }
 }
